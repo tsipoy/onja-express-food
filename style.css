@@ -38,7 +38,8 @@ body {
 	grid-gap: 30px; */
 } 
 
-.order {
+.order,
+.new-order {
 	display: grid;
 	grid-gap: 10px;
 	grid-template-columns: 1fr;
@@ -47,9 +48,11 @@ body {
 	border-radius: 5px;
 	background: rgb(231, 231, 231);
 	padding: 20px;
+	margin: 16px;
 }
 
-span.title {
+span.title,
+.new-title {
 	font-size: 20px;
 	text-transform: uppercase;
 }
