@@ -32,11 +32,11 @@ body {
 	grid-column: 2;
 }
 
-.order-list {
+ .order-list {
 	grid-column: 2;
-	display: grid;
-	grid-gap: 30px;
-}
+	/* display: grid;
+	grid-gap: 30px; */
+} 
 
 .order {
 	display: grid;
@@ -100,7 +100,7 @@ button.served:hover {
 	color: white;
 }
 
-.modal-outer {
+.outer-modal {
 	display: grid;
 	place-items: center center;
 	background-color: hsla(0, 39%, 60%, 0.7);
@@ -123,14 +123,20 @@ button.served:hover {
 	opacity: 0;
 }
 
-.modal-inner {
+form {
+	padding: 1rem;
+	border: hotpink solid 1rem;
+	border-radius: 10px;
+}
+
+.inner-modal {
 	max-width: 400px;
 	min-width: 200px;
 	min-height: 200px;
 	background: white;
 }
 
-.modal-outer.open {
+.outer-modal.open {
 	opacity: 1;
 	pointer-events: all;
 }
