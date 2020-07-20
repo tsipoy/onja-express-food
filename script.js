@@ -46,7 +46,7 @@ const openModal = event => {
     `; 
 };
 
-// 
+//
 const closeModal = event => {
     const isOutside = !event.target.closest('.inner-modal');
     if (isOutside) {
@@ -64,18 +64,20 @@ window.addEventListener('keydown', escapeModal);
 outerModal.addEventListener('click', closeModal);
 button.addEventListener('click', openModal);
 
-const theOrder = () => {
-     const myNewHtml = `
-         <div class="new-order">
-             <span class="title">
-             </span>
-             <button class="details">Details</button>
-             <button class="served">Delete order</button>
-         </div>
-     `;
-     orderList.insertAdjacentHTML('afterbegin', myNewHtml);
-     outerModal.classList.remove('open');
- };
+// btn.addEventListener('click', ($event) => {
+//     $event.preventDefault();
+//     const myNewHtml = `
+//         <div class="new-order">
+//             <span class="title">
+//             </span>
+//              <button class="details">Details</button>
+//              <button class="served">Delete order</button>
+//          </div>
+//      `;
+//     //  orderList.insertAdjacentHTML('afterbegin', myNewHtml);
+//     //  outerModal.classList.remove('open');
+//     outerModal.innerHTML = myNewHtml;
+//  });
 
 
 
@@ -91,9 +93,9 @@ detail.addEventListener('click', ($event) => {
 });
 
 // Event delegation
-window.addEventListener ('click', ($event) => {
-    if ($event.target.matches('button.submitOrder')) {
-
+window.addEventListener ('click', (event) => {
+    if (event.target.matches('button.submitOrder')) {
+        
     };
     // Show detail
     if (event.target.matches('button.details')) {
@@ -101,6 +103,6 @@ window.addEventListener ('click', ($event) => {
     };
 
     if(event.target.matches('button.served')) {
-        outerModal.classList.remove('.order');
+        order.style.display = "none";
     }
 });
