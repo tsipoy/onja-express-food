@@ -9,9 +9,10 @@ const detail = document.querySelector('.details');
 const served = document.querySelector('.served');
 const btn = document.querySelector('.submitOrder');
 const select = document.querySelector('.select-form');
-const form = document.querySelector('form');
+const AllForm = document.querySelector('form');
+const inputForm = document.querySelector('input-form'); 
 
-//  
+// Add inner and outer modal  
 const openModal = event => {
     outerModal.classList.add('open');
     innerModal.innerHTML = `
@@ -64,8 +65,6 @@ window.addEventListener('keydown', escapeModal);
 outerModal.addEventListener('click', closeModal);
 button.addEventListener('click', openModal);
 
-// btn.addEventListener('click', ($event) => {
-//     $event.preventDefault();
 //     const myNewHtml = `
 //         <div class="new-order">
 //             <span class="title">
@@ -79,30 +78,28 @@ button.addEventListener('click', openModal);
 //     outerModal.innerHTML = myNewHtml;
 //  });
 
-
-
-detail.addEventListener('click', ($event) => {
-    $event.preventDefault();
-    const myHtml = `
-         <div class="order-detail">
-             <h3></h3>
-             <h5>Order<br></h5>
-         </div>
-     `;
-    innerModal.innerHTML = myHtml;
-});
+// function 
+const myDetail = `
+    <div class="order-detail">
+        <h3>${title}</h3>
+        <h5>Order<br>${inputForm}</h5>
+        <img src="https://picsum.photos/200">
+    </div>
+`;
+innerModal.innerHTML = myDetail;
 
 // Event delegation
 window.addEventListener ('click', (event) => {
-    if (event.target.matches('button.submitOrder')) {
-        
+    if (event.target.matches('button.submitOrder')) {     
     };
+
     // Show detail
     if (event.target.matches('button.details')) {
         outerModal.classList.add('open');
     };
 
+    // delete detail
     if(event.target.matches('button.served')) {
         order.style.display = "none";
-    }
+    };
 });
