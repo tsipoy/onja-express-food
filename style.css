@@ -126,7 +126,8 @@ button.served:hover {
 	opacity: 0;
 }
 
-form {
+form,
+.order-detail {
 	padding: 1rem;
 	border: hotpink solid 1rem;
 	border-radius: 10px;
@@ -143,3 +144,4 @@ form {
 	opacity: 1;
 	pointer-events: all;
 }
+

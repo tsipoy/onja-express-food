@@ -15,7 +15,7 @@ const inputForm = document.querySelector('input-form');
 // Add inner and outer modal  
 const openModal = event => {
     outerModal.classList.add('open');
-    innerModal.innerHTML = `
+	const orderHtml = `
     <form>
 		<p>Your name :</p>
 		<input class="input-form" type="text" id="name" name="name" placeholder="Enter your name here"
@@ -44,7 +44,8 @@ const openModal = event => {
 				placeholder="Enter a number here" required />
 			<button class="submitOrder" type="submit">Add this order</button>
 	</form>
-    `; 
+	`;
+	innerModal.innerHTML = orderHtml; 
 };
 
 //
@@ -65,37 +66,46 @@ window.addEventListener('keydown', escapeModal);
 outerModal.addEventListener('click', closeModal);
 button.addEventListener('click', openModal);
 
-//     const myNewHtml = `
-//         <div class="new-order">
-//             <span class="title">
-//             </span>
-//              <button class="details">Details</button>
-//              <button class="served">Delete order</button>
-//          </div>
-//      `;
-//     //  orderList.insertAdjacentHTML('afterbegin', myNewHtml);
-//     //  outerModal.classList.remove('open');
-//     outerModal.innerHTML = myNewHtml;
-//  });
-
 // function 
+
+const handleSubmit = event => {
+	event.preventDefault();
+	if (event.target.matches('form')) {
+		const form = event.target;
+		const {name, dish, size, amount} = form;
+		console.log(name.value, dish.value, size.value, amount.value)
+		const myNewHtml = `
+         <div class="new-order" data-dish="${dish.value} data-size="${size.value} data-amount="${amount.value} >
+			 <span class="title">
+			 	${name.value}
+             </span>
+              <button class="details">Details</button>
+              <button class="served">Delete order</button>
+          </div>
+	   `;
+	    order.innerHTML = myNewHtml;
+	    form.reset();
+	}
+};
+
 const myDetail = `
     <div class="order-detail">
-        <h3>${title}</h3>
-        <h5>Order<br>${inputForm}</h5>
+        <h2>${title}</h2>
+		<h3>Order:</h3>
+		<p></p>
         <img src="https://picsum.photos/200">
     </div>
 `;
 innerModal.innerHTML = myDetail;
 
 // Event delegation
-window.addEventListener ('click', (event) => {
-    if (event.target.matches('button.submitOrder')) {     
-    };
 
+button.addEventListener('submit', handleSubmit);
+window.addEventListener ('click', (event) => {
     // Show detail
-    if (event.target.matches('button.details')) {
-        outerModal.classList.add('open');
+    if (event.target.matches('.details')) {
+		outerModal.classList.add('open');
+		outerModal.classList.add('order-detail');
     };
 
     // delete detail
